@@ -5,7 +5,7 @@
 
 #define BASE 0 // base programmers dvorak
 #define SHFT 1 // shift
-#define MDIA 2 // media keys
+#define MDIA  2 // media keys
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -71,23 +71,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2,
-                                           KC_TRNS, KC_TRNS,
-                                                    KC_TRNS,
-                                  KC_TRNS, KC_TRNS, KC_TRNS,
-    // right hand
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-                          KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_WBAK
+       // left hand
+       _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
+       _______, _______, _______, KC_MS_U, _______, _______, _______,
+       _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, KC_BTN1, KC_BTN2,
+                                                    _______, _______,
+                                                             _______,
+                                           _______, _______, _______,
+       // right hand
+       KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______,
+       _______, _______, _______, _______, _______, _______, _______,
+                _______, _______, _______, _______, _______, KC_MPLY,
+       _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+                         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
+       _______, _______,
+       _______,
+       _______, _______, KC_WBAK
 ),
 };
 
