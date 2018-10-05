@@ -3,6 +3,8 @@
 #include "action_layer.h"
 #include "version.h"
 
+#define TAPPING_TOGGLE 1
+
 #define BASE 0 // base programmers dvorak
 #define SHFT 1 // shift
 #define MDIA  2 // media keys
@@ -37,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_LCTL, KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
                                                     _______, _______,
                                                              KC_LALT,
-                                           KC_SPC , KC_TAB , KC_LCTL,
+                                           KC_SPC , KC_TAB , TT(MDIA),
        // right hand
        _______, KC_PAST, KC_RPRN, KC_PLUS, KC_RBRC, KC_EXLM, KC_HASH,
        KC_AT  , KC_F   , KC_G   , KC_C   , KC_R   , KC_L   , KC_SLSH,
@@ -46,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          KC_DOWN, KC_UP  , KC_RALT, KC_RGUI, KC_RCTL,
        KC_ESC , _______,
        KC_RALT,
-       KC_RCTL, KC_BSPC, KC_ENT
+       TT(MDIA), KC_BSPC, KC_ENT
     ),
 
 [SHFT] = LAYOUT_ergodox(
@@ -71,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
-       // left hand
+       // left hands
        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
        _______, _______, _______, KC_MS_U, _______, _______, _______,
        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,
@@ -82,10 +84,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            _______, _______, _______,
        // right hand
        KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______,
-       _______, _______, _______, _______, _______, _______, _______,
-                _______, _______, _______, _______, _______, KC_MPLY,
-       _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
-                         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
+       _______, _______, _______, KC_UP  , _______, _______, _______,
+                _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+       _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______,
+                         KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
        _______, _______,
        _______,
        _______, _______, KC_WBAK
