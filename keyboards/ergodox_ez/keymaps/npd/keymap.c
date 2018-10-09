@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
        // left hand
-       KC_AMPR, KC_LBRC, KC_LCBR, KC_RCBR, KC_LPRN, KC_EQL , _______,
+       KC_AMPR, KC_PLUS, KC_LBRC, KC_LCBR, KC_LPRN, KC_EQL , _______,
        KC_DLR , KC_SCLN, KC_COMM, KC_DOT , KC_P   , KC_Y   , _______,
        KC_TAB , KC_A   , KC_O   , KC_E   , KC_U   , KC_I   ,
        NK_SFT , KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                              KC_LALT,
                                            KC_SPC , KC_TAB , TT(MDIA),
        // right hand
-       _______, KC_PAST, KC_RPRN, KC_PLUS, KC_RBRC, KC_EXLM, KC_HASH,
+       _______, KC_PAST, KC_RPRN, KC_RCBR, KC_RBRC, KC_EXLM, KC_HASH,
        KC_AT  , KC_F   , KC_G   , KC_C   , KC_R   , KC_L   , KC_SLSH,
                 KC_D   , KC_H   , KC_T   , KC_N   , KC_S   , KC_PMNS,
        KC_BSLS, KC_B   , KC_M   , KC_W   , KC_V   , KC_Z   , NK_SFT ,
