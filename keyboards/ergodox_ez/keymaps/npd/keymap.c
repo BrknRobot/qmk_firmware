@@ -75,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MDIA] = LAYOUT_ergodox(
        // left hands
        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
-       _______, _______, _______, KC_MS_U, _______, _______, _______,
-       _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,
-       _______, _______, _______, _______, _______, _______, _______,
-       _______, _______, _______, KC_BTN1, KC_BTN2,
+       _______, KC_PSLS, KC_KP_7, KC_KP_8, KC_KP_9, _______, _______,
+       _______, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, _______,
+       _______, KC_PMNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_NLCK, _______,
+       _______, KC_PPLS, KC_KP_0, KC_PDOT, KC_PENT,
                                                     _______, _______,
                                                              _______,
                                            _______, _______, _______,
