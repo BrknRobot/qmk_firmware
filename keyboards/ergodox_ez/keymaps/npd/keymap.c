@@ -3,12 +3,11 @@
 #include "action_layer.h"
 #include "version.h"
 
-#define TAPPING_TOGGLE 1
-
 #define BASE 0 // base programmers dvorak
 #define SHFT 1 // shift
-#define MDIA 2 // media keys
-#define KBRD 3
+#define CTRL 2
+#define MDIA 3 // media keys
+#define KBRD 4
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -24,9 +23,8 @@ enum custom_keycodes {
   SH_9,
   SH_0,
   SH_GRV,
+  MY_LOCK
 };
-
-#define NK_SFT LM(SHFT, 2)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -36,19 +34,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_AMPR, KC_PLUS, KC_LBRC, KC_LCBR, KC_LPRN, KC_EQL , _______,
        KC_DLR , KC_SCLN, KC_COMM, KC_DOT , KC_P   , KC_Y   , _______,
        KC_TAB , KC_A   , KC_O   , KC_E   , KC_U   , KC_I   ,
-       NK_SFT , KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
-       KC_LCTL, KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
-                                                    _______, KC_INS ,
-                                                             KC_LALT,
+       TT(SHFT), KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
+       TT(CTRL), KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
+                                                    MY_LOCK, KC_INS ,
+                                                             TT(KBRD),
                                            KC_SPC , KC_TAB , TT(MDIA),
        // right hand
        _______, KC_PAST, KC_RPRN, KC_RCBR, KC_RBRC, KC_EXLM, KC_HASH,
        KC_AT  , KC_F   , KC_G   , KC_C   , KC_R   , KC_L   , KC_SLSH,
                 KC_D   , KC_H   , KC_T   , KC_N   , KC_S   , KC_PMNS,
-       KC_BSLS, KC_B   , KC_M   , KC_W   , KC_V   , KC_Z   , NK_SFT ,
-                         KC_DOWN, KC_UP  , KC_RALT, KC_RGUI, KC_RCTL,
+       KC_BSLS, KC_B   , KC_M   , KC_W   , KC_V   , KC_Z   , TT(SHFT),
+                         KC_DOWN, KC_UP  , KC_RALT, KC_RGUI, TT(CTRL),
        KC_ESC , KC_DEL ,
-       KC_RALT,
+       TT(KBRD),
        TT(MDIA), KC_BSPC, KC_ENT
     ),
 
@@ -72,9 +70,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______,
        _______, _______, _______
 ),
+
+[CTRL] = LAYOUT_ergodox(
+        // left hand
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______,
+                                                     _______, _______,
+                                                              _______,
+                                            _______, _______, _______,
+        // right hand
+        _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+                 _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,
+                          _______, _______, _______, _______, _______,
+        _______, _______,
+        _______,
+        _______, _______, _______
+),
+
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
-       // left hands
+       // left hand
        _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
        _______, KC_PSLS, KC_KP_7, KC_KP_8, KC_KP_9, _______, _______,
        _______, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, _______,
@@ -220,6 +240,21 @@ uint32_t layer_state_set_user(uint32_t state) {
   ergodox_right_led_3_off();
 
   uint8_t layer = biton32(state);
+
+  if (state & 1<<SHFT) {
+    SEND_STRING(SS_DOWN(X_LSHIFT));
+  }
+  else {
+    SEND_STRING(SS_UP(X_LSHIFT));
+  }
+
+  if (state & 1<<CTRL) {
+    SEND_STRING(SS_DOWN(X_LCTRL));
+  }
+  else {
+    SEND_STRING(SS_UP(X_LCTRL));
+  }
+
   switch (layer) {
       case 0:
         #ifdef RGBLIGHT_COLOR_LAYER_0
