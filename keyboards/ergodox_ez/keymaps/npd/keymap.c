@@ -95,20 +95,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
        // left hand
-       _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
-       _______, KC_PSLS, KC_KP_7, KC_KP_8, KC_KP_9, _______, _______,
-       _______, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, _______,
-       _______, KC_PMNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_NLCK, _______,
-       _______, KC_PPLS, KC_KP_0, KC_PDOT, KC_PENT,
+       XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
+       XXXXXXX, KC_PSLS, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX, XXXXXXX,
+       XXXXXXX, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, XXXXXXX,
+       XXXXXXX, KC_PMNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_NLCK, XXXXXXX,
+       XXXXXXX, KC_PPLS, KC_KP_0, KC_PDOT, KC_PENT,
                                                     _______, _______,
                                                              _______,
                                            _______, _______, _______,
        // right hand
-       KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______,
-       _______, KC_HOME, _______, KC_UP  , _______, KC_PGUP, _______,
-                KC_END , KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, _______,
-       _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______,
-                         KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+       KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX,
+       XXXXXXX, KC_HOME, XXXXXXX, KC_UP  , XXXXXXX, KC_PGUP, XXXXXXX,
+                KC_END , KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX,
+       XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+                         KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
        _______, _______,
        _______,
        _______, _______, KC_WBAK
