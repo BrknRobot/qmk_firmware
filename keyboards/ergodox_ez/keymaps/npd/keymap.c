@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SHFT] = LAYOUT_ergodox(
        // left hand
-       SH_PERC, SH_1   , SH_2   , SH_3   , SH_4   , SH_5   , _______,
+       SH_PERC, SH_0   , SH_1   , SH_2   , SH_3   , SH_4   , _______,
        KC_TILD, KC_COLN, KC_LABK, KC_RABK, _______, _______, _______,
        _______, _______, _______, _______, _______, _______,
        _______, KC_DQUO, _______, _______, _______, _______, _______,
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                              _______,
                                            _______, _______, _______,
        // right hand
-       _______, SH_6   , SH_7   , SH_8   , SH_9   , SH_0   , SH_GRV ,
+       _______, SH_5   , SH_6   , SH_7   , SH_8   , SH_9   , SH_GRV ,
        KC_CIRC, _______, _______, _______, _______, _______, KC_QUES,
                 _______, _______, _______, _______, _______, KC_UNDS,
        KC_PIPE, _______, _______, _______, _______, _______, _______,
