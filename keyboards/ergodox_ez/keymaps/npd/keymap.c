@@ -23,7 +23,11 @@ enum custom_keycodes {
   SH_9,
   SH_0,
   SH_GRV,
-  MY_LOCK
+  MY_LOCK,
+  GP_LIKE,
+  GP_DLKE,
+  GP_LUCK,
+  GP_NOTE
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -107,8 +111,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX,
        XXXXXXX, KC_HOME, XXXXXXX, KC_UP  , XXXXXXX, KC_PGUP, XXXXXXX,
                 KC_END , KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, XXXXXXX,
-       XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, _______,
-                         KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+       GP_NOTE, GP_LUCK, KC_MPRV, KC_MPLY, KC_MNXT, GP_LIKE, _______,
+                         KC_VOLD, KC_MUTE, KC_VOLU, GP_DLKE, _______,
        _______, _______,
        _______,
        _______, _______, KC_WBAK
@@ -196,6 +200,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SH_GRV:
       if (record->event.pressed) {
         SEND_STRING(SS_UP(X_LSHIFT)"`"SS_DOWN(X_LSHIFT));
+      }
+      return false;
+    case GP_LIKE:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("u"))));
+      }
+      return false;
+    case GP_DLKE:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("d"))));
+      }
+      return false;
+    case GP_LUCK:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("l"))));
+      }
+      return false;
+    case GP_NOTE:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("\\"))));
       }
       return false;
   }
