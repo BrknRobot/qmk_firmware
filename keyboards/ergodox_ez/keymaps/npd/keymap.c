@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // left hand
        KC_AMPR, KC_PLUS, KC_LBRC, KC_LCBR, KC_LPRN, KC_EQL , _______,
        KC_DLR , KC_SCLN, KC_COMM, KC_DOT , KC_P   , KC_Y   , _______,
-       KC_TAB , KC_A   , KC_O   , KC_E   , KC_U   , KC_I   ,
+       KC_GRV , KC_A   , KC_O   , KC_E   , KC_U   , KC_I   ,
        TT(SHFT), KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
        TT(CTRL), KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
                                                     MY_LOCK, KC_INS ,
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            KC_SPC , KC_TAB , TT(MDIA),
        // right hand
        _______, KC_PAST, KC_RPRN, KC_RCBR, KC_RBRC, KC_EXLM, KC_HASH,
-       KC_AT  , KC_F   , KC_G   , KC_C   , KC_R   , KC_L   , KC_SLSH,
+       KC_SLSH, KC_F   , KC_G   , KC_C   , KC_R   , KC_L   , KC_AT  ,
                 KC_D   , KC_H   , KC_T   , KC_N   , KC_S   , KC_PMNS,
        KC_BSLS, KC_B   , KC_M   , KC_W   , KC_V   , KC_Z   , TT(SHFT),
                          KC_DOWN, KC_UP  , KC_RALT, KC_RGUI, TT(CTRL),
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        // left hand
        SH_PERC, SH_0   , SH_1   , SH_2   , SH_3   , SH_4   , _______,
        KC_TILD, KC_COLN, KC_LABK, KC_RABK, _______, _______, _______,
-       _______, _______, _______, _______, _______, _______,
+       KC_AT  , _______, _______, _______, _______, _______,
        _______, KC_DQUO, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______,
                                                     _______, _______,
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            _______, _______, _______,
        // right hand
        _______, SH_5   , SH_6   , SH_7   , SH_8   , SH_9   , SH_GRV ,
-       KC_CIRC, _______, _______, _______, _______, _______, KC_QUES,
+       KC_QUES, _______, _______, _______, _______, _______, KC_CIRC,
                 _______, _______, _______, _______, _______, KC_UNDS,
        KC_PIPE, _______, _______, _______, _______, _______, _______,
                          _______, _______, _______, _______, _______,
