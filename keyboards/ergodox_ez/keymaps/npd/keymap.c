@@ -8,6 +8,7 @@
 #define CTRL 2
 #define MDIA 3 // media keys
 #define KBRD 4
+#define UW   5
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -27,7 +28,15 @@ enum custom_keycodes {
   GP_LIKE,
   GP_DLKE,
   GP_LUCK,
-  GP_NOTE
+  GP_NOTE,
+  UT_A,
+  UT_B,
+  UT_N,
+  UW_1,
+  UW_2,
+  UW_3,
+  UW_4,
+  UW_5
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -41,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        TT(SHFT), KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
        TT(CTRL), KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
                                                     MY_LOCK, KC_INS ,
-                                                             TT(KBRD),
+                                                             TT(UW),
                                            KC_SPC , KC_TAB , TT(MDIA),
        // right hand
        _______, KC_PAST, KC_RPRN, KC_RCBR, KC_RBRC, KC_EXLM, KC_HASH,
@@ -138,6 +147,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______,
        _______, _______, RGB_TOG
 ),
+// UnionWare control
+[UW] = LAYOUT_ergodox(
+       // left hand
+       UW_1, _______, _______, _______, _______, _______, UT_N,
+       UW_2, _______, _______, _______, _______, _______, UT_B,
+       UW_3, _______, _______, _______, _______, _______,
+       UW_4, _______, _______, _______, _______, _______, UT_A,
+       UW_5, _______, _______, _______, _______,
+                                                    _______, _______,
+                                                             _______,
+                                           _______, _______, _______,
+       // right hand
+       _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______,
+                _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______,
+       _______, _______, _______, RGB_TOG, RGB_M_P, _______, _______,
+                         _______, _______, _______, _______, _______,
+       _______, _______,
+       _______,
+       _______, _______, RGB_TOG
+),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -220,6 +250,46 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case GP_NOTE:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("\\"))));
+      }
+      return false;
+    case UT_A:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("a"))));
+      }
+      return false;
+    case UT_B:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("b"))));
+      }
+      return false;
+    case UT_N:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("n"))));
+      }
+      return false;
+    case UW_1:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LSFT("reloadct")));
+      }
+      return false;
+    case UW_2:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LSFT("reloadsec")));
+      }
+      return false;
+    case UW_3:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LSFT("uwsql")));
+      }
+      return false;
+    case UW_4:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LSFT("uwborderstreet")));
+      }
+      return false;
+    case UW_5:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LSFT("uwedit")));
       }
       return false;
   }
