@@ -1,11 +1,10 @@
 #pragma once
 #include "config_common.h"
-#define VENDOR_ID       0xFEED
+#define VENDOR_ID       0x4B42 // KB
 #define PRODUCT_ID      0x1224
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    KBDfans
-#define PRODUCT         kbd67mkiirgb
-#define DESCRIPTION     kbd67mkii rgb keyboard
+#define PRODUCT         kbd67mkiirgb v1
 
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
@@ -17,9 +16,9 @@
 #define RGB_MATRIX_LED_FLUSH_LIMIT 26
 #define DEBOUNCE 3
 #define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
-#define RGB_DISABLE_WHEN_USB_SUSPENDED true // turn off effects when suspended
+#define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
 #define RGB_MATRIX_KEYPRESSES
-#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN	
+#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 #define DISABLE_RGB_MATRIX_BAND_SAT
 #define DISABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
 #define DISABLE_RGB_MATRIX_BAND_SPIRAL_SAT
