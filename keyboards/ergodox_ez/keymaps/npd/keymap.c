@@ -3,12 +3,13 @@
 #include "action_layer.h"
 #include "version.h"
 
-#define BASE 0 // base programmers dvorak
-#define SHFT 1 // shift
-#define CTRL 2
-#define MDIA 3 // media keys
-#define KBRD 4
-#define UW   5
+#define BASE   0 // base programmers dvorak
+#define SHFT   1 // shift
+#define CTRL   2
+#define QWERTY 3
+#define MDIA   4 // media keys
+#define KBRD   5
+#define UW     6
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_GRV , KC_A   , KC_O   , KC_E   , KC_U   , KC_I   ,
        TT(SHFT), KC_QUOT, KC_Q   , KC_J   , KC_K   , KC_X   , _______,
        TT(CTRL), KC_LGUI, KC_LALT, KC_LEFT, KC_RGHT,
-                                                    MY_LOCK, KC_INS ,
+                                                    TT(QWERTY), KC_INS ,
                                                              TT(UW),
                                            KC_SPC , KC_TAB , TT(MDIA),
        // right hand
@@ -84,6 +85,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______
 ),
 
+[QWERTY] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LEFT,              KC_RGHT,      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,           KC_MINS,
+  KC_DEL,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,              _______,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,           KC_BSLS,
+  KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    ALL_T(KC_NO),         MEH_T(KC_NO), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  _______, _______, _______, _______, _______,                                                       _______, _______, _______, _______, _______,
+                                               _______, _______,                _______, _______,
+                                                        _______,                _______,
+                                      _______, _______, _______,                _______, _______, _______
+),
+
 [CTRL] = LAYOUT_ergodox(
         // left hand
         _______, _______, _______, _______, _______, _______, _______,
@@ -111,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,
        XXXXXXX, KC_PSLS, KC_KP_7, KC_KP_8, KC_KP_9, XXXXXXX, XXXXXXX,
        XXXXXXX, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, XXXXXXX,
-       _______, KC_PMNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_NLCK, XXXXXXX,
+       _______, KC_PMNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_NUM , XXXXXXX,
        _______, KC_PPLS, KC_KP_0, KC_PDOT, KC_PENT,
                                                     _______, _______,
                                                              _______,
@@ -126,6 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______,
        _______, _______, KC_WBAK
 ),
+
 // Keyboard control
 [KBRD] = LAYOUT_ergodox(
        // left hand
@@ -160,13 +174,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            _______, _______, _______,
        // right hand
        _______, _______, _______, _______, _______, _______, _______,
-       _______, _______, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______,
-                _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, _______,
-       _______, _______, _______, RGB_TOG, RGB_M_P, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______,
+                _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______,
                          _______, _______, _______, _______, _______,
        _______, _______,
        _______,
-       _______, _______, RGB_TOG
+       _______, _______, _______
 ),
 };
 
@@ -174,122 +188,122 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case SH_PERC:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"%"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"%"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_1:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"1"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"1"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_2:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"2"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"2"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_3:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"3"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"3"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_4:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"4"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"4"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_5:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"5"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"5"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_6:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"6"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"6"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_7:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"7"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"7"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_8:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"8"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"8"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_9:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"9"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"9"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_0:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"0"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"0"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case SH_GRV:
       if (record->event.pressed) {
-        SEND_STRING(SS_UP(X_LSHIFT)"`"SS_DOWN(X_LSHIFT));
+        SEND_STRING(SS_UP(X_LEFT_SHIFT)"`"SS_DOWN(X_LEFT_SHIFT));
       }
       return false;
     case GP_LIKE:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("u"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("u"))));
       }
       return false;
     case GP_DLKE:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("d"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("d"))));
       }
       return false;
     case GP_LUCK:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("l"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("l"))));
       }
       return false;
     case GP_NOTE:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("\\"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("\\"))));
       }
       return false;
     case UT_A:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("a"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("a"))));
       }
       return false;
     case UT_B:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("b"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("b"))));
       }
       return false;
     case UT_N:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LALT(SS_LSFT("n"))));
+        SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("n"))));
       }
       return false;
     case UW_1:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LSFT("reloadct")));
+        SEND_STRING(SS_LCTL(SS_LSFT("reloadct")));
       }
       return false;
     case UW_2:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LSFT("reloadsec")));
+        SEND_STRING(SS_LCTL(SS_LSFT("reloadsec")));
       }
       return false;
     case UW_3:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LSFT("uwsql")));
+        SEND_STRING(SS_LCTL(SS_LSFT("uwsql")));
       }
       return false;
     case UW_4:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LSFT("uwborderstreet")));
+        SEND_STRING(SS_LCTL(SS_LSFT("uwborderstreet")));
       }
       return false;
     case UW_5:
       if (record->event.pressed) {
-        SEND_STRING(SS_LCTRL(SS_LSFT("uwedit")));
+        SEND_STRING(SS_LCTL(SS_LSFT("uwedit")));
       }
       return false;
   }
@@ -304,7 +318,7 @@ void matrix_init_user(void) {
 };
 
 // Runs whenever there is a layer state change.
-uint32_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_user(layer_state_t state) {
   ergodox_board_led_off();
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
@@ -313,19 +327,19 @@ uint32_t layer_state_set_user(uint32_t state) {
   //uint8_t layer = biton32(state);
 
   if (state & 1<<SHFT) {
-    SEND_STRING(SS_DOWN(X_LSHIFT));
+    SEND_STRING(SS_DOWN(X_LEFT_SHIFT));
     ergodox_right_led_1_on();
   }
   else {
-    SEND_STRING(SS_UP(X_LSHIFT));
+    SEND_STRING(SS_UP(X_LEFT_SHIFT));
   }
 
   if (state & 1<<CTRL) {
-    SEND_STRING(SS_DOWN(X_LCTRL));
+    SEND_STRING(SS_DOWN(X_LEFT_CTRL));
     ergodox_right_led_2_on();
   }
   else {
-    SEND_STRING(SS_UP(X_LCTRL));
+    SEND_STRING(SS_UP(X_LEFT_CTRL));
   }
 
   if (state & 1<<MDIA) {

@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_WHEEL_MAX_SPEED    MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_WHEEL_TIME_TO_MAX  MOUSEKEY_TIME_TO_MAX
 
-#define TAPPING_TOGGLE  2
+#define TAPPING_TOGGLE  1
 
 #define TAPPING_TERM    200
 
@@ -79,7 +79,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
 #define RGBLIGHT_HUE_STEP 12
-#define RGBLIGHT_SAT_STEP 12
+#define RGBLIGHT_SAT_STEP 255
 #define RGBLIGHT_VAL_STEP 12
 
 // Pick one of the modes
